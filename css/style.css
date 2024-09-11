@@ -1,0 +1,55 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital@0;1&family=Roboto+Slab:wght@100..900&family=Roboto:wght@300;400&display=swap");
+.roboto-light {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.roboto-regular {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.roboto-slab-bold {
+  font-family: "Roboto Slab", serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+.roboto-slab-regular {
+  font-family: "Roboto Slab", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+.roboto-slab-light {
+  font-family: "Roboto Slab", serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+.roboto-mono-regular {
+  font-family: "Roboto Mono", monospace;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+:root {
+  --one-000: hsl(225, 9%, 9%);
+  --nine-000: hsl(216, 8%, 12%);
+  --eight-000: hsl(220, 7%, 18%);
+  --seven-000: hsl(216, 9%, 23%);
+  --six-000: hsl(216, 8%, 38%);
+  --five-000: hsl(213, 4%, 51%);
+  --four-000: hsl(222, 9%, 78%);
+  --three-000: hsl(0, 0%, 89%);
+  --two-000: hsl(0, 0%, 96%);
+  --one-00: hsl(0, 0%, 100%);
+  --orange: hsl(12, 75%, 58%);
+  --oranga-hover: hsl(21, 86%, 67%);
+}
+
+body {
+  background-color: var(--one-000);
+}
