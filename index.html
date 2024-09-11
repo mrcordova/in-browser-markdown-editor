@@ -1,36 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
-  
-  <title>Frontend Mentor | In-browser markdown editor</title>
-</head>
-<body>
-  <!-- Sidebar start -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/favicon-32x32.png" />
 
-  My Documents
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script type="module" src="js/script.js"></script>
+    <title>Frontend Mentor | In-browser markdown editor</title>
+  </head>
+  <body>
+    <!-- Sidebar start -->
 
-  New Document
+    My Documents New Document
 
-  <!-- Sidebar end -->
+    <!-- Sidebar end -->
 
-  <!-- Header start -->
+    <span style="display: block" markdown="1">
+      &thinsp; ### features &thinsp;
+    </span>
+    <!-- Header start -->
 
-  Document Name
+    <template type="markdown">### features</template>
+    Document Name Save Changes
 
-  Save Changes
+    <!-- Header end -->
 
-  <!-- Header end -->
+    <!-- Main start -->
 
-  <!-- Main start -->
+    Markdown Preview
 
-  Markdown
-
-  Preview
-
-  <!-- Main end -->
-</body>
+    <!-- Main end -->
+  </body>
 </html>
