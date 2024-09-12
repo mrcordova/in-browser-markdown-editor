@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital@0;1&family=Roboto+Slab:wght@100..900&family=Roboto:wght@300;400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,500;1,500&family=Roboto+Slab:wght@100..900&family=Roboto:wght@300;400;500&display=swap");
 .roboto-light {
   font-family: "Roboto", sans-serif;
   font-weight: 300;
@@ -8,6 +8,11 @@
 .roboto-regular {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
+  font-style: normal;
+}
+.roboto-medium {
+  font-family: "Roboto", system-ui;
+  font-weight: 500;
   font-style: normal;
 }
 
@@ -71,6 +76,12 @@ main {
   min-height: 100%;
   overflow-x: hidden;
 }
+div[data-show="true"] {
+  display: block;
+}
+div[data-show="false"] {
+  display: none;
+}
 .document-container {
   display: flex;
   align-items: center;
@@ -125,4 +136,23 @@ main {
 /* show when mobile and tablet */
 #sidebar-logo {
   display: none;
+}
+
+.view {
+  background-color: var(--nine-000);
+  color: var(--four-000);
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  & p {
+    font-size: 0.875rem;
+    letter-spacing: 0.125rem;
+    line-height: 1.14;
+  }
+
+  & path {
+    fill: var(--four-000);
+  }
 }
