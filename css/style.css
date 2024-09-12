@@ -177,7 +177,8 @@ div[data-show="false"] {
     line-height: 1.14;
   }
 
-  & path {
-    fill: var(--four-000);
+  & svg {
+    color: var(--four-000);
+    /* color: red; */
   }
 }
