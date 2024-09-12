@@ -95,6 +95,7 @@ div[data-show="true"] {
     line-height: 1.71;
     padding-inline: 1rem;
     padding-block: 1rem 0.75rem;
+    resize: none;
     /* text-indent: 1rem; */
   }
 }
@@ -181,4 +182,20 @@ div[data-show="false"] {
     color: var(--four-000);
     /* color: red; */
   }
+}
+
+@media (min-width: 48rem) {
+  div[data-show="true"]:has(#markdown-btn) + div[data-show="false"] {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  :is(#markdown-btn) {
+    display: none;
+  }
+
+  /* #preview-btn-tablet {
+    display: block;
+  } */
 }
