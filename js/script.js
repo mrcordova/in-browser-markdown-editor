@@ -14,6 +14,10 @@ const markdownTextArea = document.getElementById("markdown");
 
 const labelToggle = document.querySelector("label[for='toggle']");
 
+const deleteBtn = document.getElementById("delete-btn");
+const deleteDialog = document.getElementById("delete-dialog");
+const confirmDeleteBtn = document.getElementById("confirm-delete-btn");
+
 const sidebarBtn = document.getElementById("sidebar-btn");
 const sideBar = document.getElementById("sidebar");
 const sideBarLogo = document.getElementById("sidebar-logo");
@@ -104,4 +108,12 @@ labelToggle.addEventListener("click", (e) => {
   }
   input.checked = !input.checked;
   // console.log(e.currentTarget);
+});
+
+deleteBtn.addEventListener("click", (e) => {
+  deleteDialog.showModal();
+});
+
+confirmDeleteBtn.addEventListener("click", (e) => {
+  deleteDialog.close();
 });
