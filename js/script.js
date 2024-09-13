@@ -12,6 +12,8 @@ const previewTemp = previewBtns[1].children[0];
 const markDownTemp = previewBtns[0].children[0];
 const markdownTextArea = document.getElementById("markdown");
 
+const labelToggle = document.querySelector("label[for='toggle']");
+
 const sidebarBtn = document.getElementById("sidebar-btn");
 const sideBar = document.getElementById("sidebar");
 const sideBarLogo = document.getElementById("sidebar-logo");
@@ -89,3 +91,17 @@ markdownTextArea.addEventListener("input", (e) => {
 });
 
 sidebarBtn.addEventListener("click", toggleSidebar);
+
+labelToggle.addEventListener("click", (e) => {
+  e.preventDefault();
+  const input = e.currentTarget.querySelector("#toggle");
+  const themeImgs = e.currentTarget.querySelectorAll("[data-theme]");
+
+  // console.log(themeImgs);
+  for (const themeImg of themeImgs) {
+    // console.log(!Boolean("false"));
+    themeImg.setAttribute("data-theme", !(themeImg.dataset.theme === "true"));
+  }
+  input.checked = !input.checked;
+  // console.log(e.currentTarget);
+});
