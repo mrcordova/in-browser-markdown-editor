@@ -63,6 +63,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100%;
+  overflow: hidden;
 }
 
 header {
@@ -77,6 +78,7 @@ main {
   min-width: 0;
   flex: 1;
   overflow-x: hidden;
+  overflow-y: hidden;
 }
 div[data-show="true"] {
   display: flex;
@@ -161,8 +163,12 @@ div[data-show="false"] {
   display: none;
 }
 #preview {
-  overflow-y: auto;
-  padding-inline: 1.25rem 1.25rem;
+  /* overflow-y: auto; */
+  overflow: auto;
+  max-height: 100vh;
+  max-height: 100svh;
+  /* padding-inline: 1.25rem 1.25rem; */
+  padding-inline: 1.25rem 0.625rem;
   padding-block: 1rem 3.375rem;
   & h1 {
     color: var(--one-00);
