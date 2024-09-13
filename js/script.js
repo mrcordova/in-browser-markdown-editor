@@ -12,9 +12,15 @@ const previewTemp = previewBtns[1].children[0];
 const markDownTemp = previewBtns[0].children[0];
 const markdownTextArea = document.getElementById("markdown");
 
+const sidebarBtn = document.getElementById("sidebar-btn");
+const sideBar = document.getElementById("sidebar");
+const sideBarLogo = document.getElementById("sidebar-logo");
 let converter = new showdown.Converter();
-// console.log(converter);
-// console.log(markDownTemp);
+
+function toggleSidebar(e) {
+  sideBar.style.display = "block";
+  sideBarLogo.style.display = "block";
+}
 function togglePreview(e) {
   const view = document.querySelector('[data-show="true"');
   const tempView = view.parentElement.querySelector('[data-show="false"');
@@ -67,3 +73,5 @@ markdownTextArea.addEventListener("input", (e) => {
     converter.makeHtml(e.currentTarget.value)
   );
 });
+
+sidebarBtn.addEventListener("click", toggleSidebar);
