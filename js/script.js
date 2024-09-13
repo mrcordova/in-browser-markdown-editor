@@ -1,4 +1,5 @@
 import { marked } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js";
+// import { showdown } from "https://cdn.jsdelivr.net/npm/showdown@2.1.0/dist/showdown.min.js";
 // document.getElementById("content").innerHTML = marked.parse(
 //   "# Marked in the browser\n\nRendered by **marked**."
 // );
@@ -6,10 +7,14 @@ const dataResponse = await fetch("data.json");
 const data = await dataResponse.json();
 const previewBtns = document.querySelectorAll("[data-preview]");
 const hideBtnTemplate = document.getElementById("hide-template");
-
+const preview = document.getElementById("preview");
 const previewTemp = previewBtns[1].children[0];
 const markDownTemp = previewBtns[0].children[0];
-console.log(markDownTemp);
+const markdownTextArea = document.getElementById("markdown");
+
+let converter = new showdown.Converter();
+// console.log(converter);
+// console.log(markDownTemp);
 function togglePreview(e) {
   const view = document.querySelector('[data-show="true"');
   const tempView = view.parentElement.querySelector('[data-show="false"');
@@ -22,7 +27,7 @@ function togglePreview(e) {
   const previewBtnOne = view.querySelector("[data-preview]");
   // const previewBtnOne = view.querySelector(#)
 
-  console.log(markDownTemp);
+  // console.log(markDownTemp);
 
   if (previewBtn.id === "preview-btn") {
     previewBtn.replaceChildren(
@@ -30,7 +35,7 @@ function togglePreview(e) {
     );
 
     previewBtnOne.replaceChildren(
-      previewBtnOne.dataset.preview === "show" ? markDownTemp : cloneOne
+      previewBtnOne.dataset.preview === "show" ? markDownTemp : clone
     );
   } else {
     previewBtn.replaceChildren(
@@ -38,7 +43,7 @@ function togglePreview(e) {
     );
 
     previewBtnOne.replaceChildren(
-      previewBtnOne.dataset.preview !== "show" ? previewTemp : cloneOne
+      previewBtnOne.dataset.preview !== "show" ? previewTemp : clone
     );
   }
   previewBtn.setAttribute(
@@ -54,3 +59,11 @@ function togglePreview(e) {
 for (const previewBtn of previewBtns) {
   previewBtn.addEventListener("click", togglePreview);
 }
+
+markdownTextArea.addEventListener("input", (e) => {
+  preview.replaceChildren();
+  preview.insertAdjacentHTML(
+    "afterbegin",
+    converter.makeHtml(e.currentTarget.value)
+  );
+});
