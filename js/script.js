@@ -20,6 +20,20 @@ let converter = new showdown.Converter();
 function toggleSidebar(e) {
   // sideBar.style.display = "block";
   // sideBarLogo.style.display = "block";
+
+  if (sideBar.style.display === "") {
+    sideBar.style.display = "flex";
+  } else {
+    sideBar.style.display = "";
+  }
+  e.currentTarget.children[0].setAttribute(
+    "src",
+    `/assets/icon-${e.currentTarget.dataset.menu}.svg`
+  );
+  e.currentTarget.setAttribute(
+    "data-menu",
+    e.currentTarget.dataset.menu === "menu" ? "close" : "menu"
+  );
 }
 function togglePreview(e) {
   const view = document.querySelector('[data-show="true"');

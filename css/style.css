@@ -77,8 +77,10 @@ body {
 .documents {
   display: flex;
   align-items: center;
+  overflow-y: auto;
 
   gap: 1.018125rem;
+  padding-block-end: 1.625rem;
   & img {
     /* width: 0.856875rem; */
   }
@@ -89,6 +91,7 @@ body {
     gap: 0.1875rem;
 
     & p:first-child {
+      color: var(--five-000);
       font-size: 0.8125rem;
       line-height: 1.15;
     }
@@ -184,13 +187,14 @@ div[data-show="false"] {
 
 #new-document-btn {
   background-color: var(--orange);
+  display: flex;
+  text-wrap: nowrap;
   font-size: 0.9375rem;
   line-height: 1.2;
   padding-inline: 2.6875rem;
   padding-block: 0.625rem 0.75rem;
   border-radius: 0.25rem;
-  display: flex;
-  text-wrap: nowrap;
+  margin-block-end: 1.5rem;
 }
 /* show for desktop */
 #not-mobile-logo {
@@ -206,6 +210,7 @@ div[data-show="false"] {
   letter-spacing: 0.125rem;
   font-size: 0.875rem;
   line-height: 1.14;
+  padding-block-end: 1.8125rem;
 }
 #save-btn {
   background-color: var(--orange);
@@ -223,13 +228,14 @@ div[data-show="false"] {
 /* show when clicked */
 #sidebar {
   color: var(--one-00);
-  display: flex;
+  background-color: var(--nine-000);
+  display: none;
   flex-direction: column;
   height: 100%;
   /* position: fixed; */
   /* max-width: max-content; */
   min-width: 0;
-  width: 15rem;
+  width: 15.625rem;
   padding-block: 1.6875rem;
   padding-inline: 1.5rem;
   /* grid-area: sidebar; */
@@ -237,6 +243,7 @@ div[data-show="false"] {
 
   & > img {
     width: 8.1875rem;
+    padding-block-end: 1.6875rem;
     /* height: 1.125rem; */
   }
 }
@@ -249,6 +256,9 @@ div[data-show="false"] {
     /* width: 1.4375rem; */
     min-width: 1.4375rem;
     height: 0.875rem;
+  }
+  &[data-menu="menu"] > img {
+    min-width: 1.125rem;
   }
   /* width: 3.5rem; */
   /* height: 3.5rem; */
