@@ -18,8 +18,8 @@ const sideBarLogo = document.getElementById("sidebar-logo");
 let converter = new showdown.Converter();
 
 function toggleSidebar(e) {
-  sideBar.style.display = "block";
-  sideBarLogo.style.display = "block";
+  // sideBar.style.display = "block";
+  // sideBarLogo.style.display = "block";
 }
 function togglePreview(e) {
   const view = document.querySelector('[data-show="true"');
