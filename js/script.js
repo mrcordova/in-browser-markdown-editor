@@ -128,4 +128,11 @@ fileInput.addEventListener("focusin", (e) => {
 });
 fileInput.addEventListener("focusout", (e) => {
   e.currentTarget.readOnly = true;
+
+  const idx = e.currentTarget.value.indexOf(".md");
+  const len = e.currentTarget.value.length;
+
+  if (idx == -1 || idx + 3 !== len) {
+    e.currentTarget.value += ".md";
+  }
 });

@@ -285,6 +285,7 @@ div[data-show="false"] {
     font-size: 0.9375rem;
     line-height: 1.2;
     color: var(--one-00);
+    caret-color: var(--orange);
 
     &:read-only {
       border-bottom: 0 solid transparent;
@@ -297,7 +298,6 @@ div[data-show="false"] {
       border-bottom: 0.0625rem solid var(--one-00);
     }
 
-    caret-color: var(--orange);
     &::placeholder {
       color: inherit;
     }
