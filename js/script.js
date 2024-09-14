@@ -34,7 +34,7 @@ function toggleSidebar(e) {
   }
   e.currentTarget.children[0].setAttribute(
     "src",
-    `/assets/icon-${e.currentTarget.dataset.menu}.svg`
+    `./assets/icon-${e.currentTarget.dataset.menu}.svg`
   );
   e.currentTarget.setAttribute(
     "data-menu",
