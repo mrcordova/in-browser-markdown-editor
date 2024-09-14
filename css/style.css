@@ -257,7 +257,9 @@ div[data-show="false"] {
     line-height: 1.2;
   }
 }
-
+/* #test {
+  position: relative;
+} */
 label[for="toggle"] {
   transition: 0.5s ease;
   display: flex;
@@ -411,9 +413,12 @@ label[for="toggle"] {
 } */
 #preview {
   overflow: auto;
+  position: fixed;
   /* height: 0px; */
   max-height: 90vh;
   max-height: 90svh;
+  /* top: 2.6rem; */
+  top: 6.125rem;
   /* overflow: auto; */
   /* max-height: 100vh; */
   /* max-height: 100svh; */
@@ -568,6 +573,7 @@ label[for="toggle"] {
   background-color: var(--view-bg);
   color: var(--view-color);
 
+  z-index: 99;
   text-transform: uppercase;
   display: flex;
   align-items: center;
@@ -601,6 +607,18 @@ label[for="toggle"] {
 
   div:has(+ textarea) {
     border-right: 0.0625rem solid var(--six-000);
+  }
+
+  .document-container {
+    & .doc-display {
+      /* gap: 0; */
+      & .doc-header {
+        font-size: 0.8125rem;
+        line-height: 1.15;
+        display: block;
+        color: var(--five-000);
+      }
+    }
   }
 
   #save-btn {
