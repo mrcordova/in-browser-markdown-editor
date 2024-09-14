@@ -227,12 +227,18 @@ div[data-show="true"] {
   }
 
   & #markdown {
+    border: 0;
     color: var(--text-area-color);
     font-size: 0.875rem;
     line-height: 1.71;
     padding-inline: 1rem;
     padding-block: 1rem 0.75rem;
     resize: none;
+
+    &:is(:focus, :focus-visible) {
+      /* border: 0px solid transparent; */
+      outline: none;
+    }
     /* text-indent: 1rem; */
   }
 }
@@ -599,13 +605,14 @@ label[for="toggle"] {
     display: flex;
     flex-direction: column;
     flex: 1;
+    /* border-right: 0.0625rem solid var(--six-000); */
   }
 
   :is(#markdown-btn) {
     display: none;
   }
 
-  div:has(+ textarea) {
+  div[data-show="true"]:has(textarea) {
     border-right: 0.0625rem solid var(--six-000);
   }
 
