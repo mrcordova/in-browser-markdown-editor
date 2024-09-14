@@ -91,8 +91,18 @@
         <div class="document-container">
           <img src="./assets/icon-document.svg" alt="document" />
           <div class="doc-display">
-            <p class="doc-header roboto-light">Document Name</p>
-            <p class="roboto-regular doc-name">welcome.md</p>
+            <label class="doc-header roboto-light" for="doc-name">
+              Document Name
+            </label>
+            <!-- <p class="doc-header roboto-light">Document Name</p> -->
+            <input
+              placeholder="welcome.md"
+              readonly="readonly"
+              type="text"
+              name="doc-name"
+              id="doc-name"
+              class="roboto-regular doc-name" />
+            <!-- <p class="roboto-regular doc-name">welcome.md</p> -->
           </div>
         </div>
         <button id="delete-btn">

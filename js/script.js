@@ -21,8 +21,8 @@ const confirmDeleteBtn = document.getElementById("confirm-delete-btn");
 const sidebarBtn = document.getElementById("sidebar-btn");
 const sideBar = document.getElementById("sidebar");
 const sideBarLogo = document.getElementById("sidebar-logo");
+const fileInput = document.getElementById("doc-name");
 let converter = new showdown.Converter();
-
 function toggleSidebar(e) {
   // sideBar.style.display = "block";
   // sideBarLogo.style.display = "block";
@@ -117,4 +117,15 @@ deleteBtn.addEventListener("click", (e) => {
 
 confirmDeleteBtn.addEventListener("click", (e) => {
   deleteDialog.close();
+});
+
+// fileInput.addEventListener("click", (e) => {
+//   e.currentTarget.readOnly = !e.currentTarget.readOnly;
+// });
+
+fileInput.addEventListener("focusin", (e) => {
+  e.currentTarget.readOnly = false;
+});
+fileInput.addEventListener("focusout", (e) => {
+  e.currentTarget.readOnly = true;
 });

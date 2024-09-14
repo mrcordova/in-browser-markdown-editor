@@ -281,8 +281,26 @@ div[data-show="false"] {
     display: none;
   }
   & .doc-name {
+    all: unset;
     font-size: 0.9375rem;
     line-height: 1.2;
+    color: var(--one-00);
+
+    &:hover {
+      cursor: pointer;
+    }
+    &:read-write {
+      border-bottom: 0.0625rem solid var(--one-00);
+    }
+
+    caret-color: var(--orange);
+    &::placeholder {
+      color: inherit;
+    }
+
+    &:read-only {
+      border-bottom: 0 solid transparent;
+    }
   }
 }
 /* #test {
