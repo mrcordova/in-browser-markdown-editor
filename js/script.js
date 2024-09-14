@@ -98,6 +98,7 @@ sidebarBtn.addEventListener("click", toggleSidebar);
 
 labelToggle.addEventListener("click", (e) => {
   e.preventDefault();
+  document.documentElement.classList.toggle("light-mode");
   const input = e.currentTarget.querySelector("#toggle");
   const themeImgs = e.currentTarget.querySelectorAll("[data-theme]");
 

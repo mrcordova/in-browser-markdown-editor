@@ -53,13 +53,40 @@
   --one-00: hsl(0, 0%, 100%);
   --orange: hsl(12, 75%, 58%);
   --oranga-hover: hsl(21, 86%, 67%);
+
+  --bg-color: var(--one-000);
+  --view-bg: var(--nine-000);
+  --view-color: var(--four-000);
+  --preview-text: var(--one-00);
+  --preview-para: var(--four-000);
+
+  --preview-block-bg: var(--eight-000);
+  --text-area-color: var(--four-000);
+
+  --dialog-bg: var(--nine-000);
+  --dialog-text: var(--one-00);
+}
+
+:root.light-mode {
+  --bg-color: var(--one-00);
+  --view-bg: var(--two-000);
+  --view-color: var(--five-000);
+
+  --preview-text: var(--seven-000);
+  --preview-para: var(--five-000);
+
+  --preview-block-bg: var(--two-000);
+
+  --text-area-color: var(--seven-000);
+  --dialog-bg: var(--one-00);
+  --dialog-text: var(--seven-000);
 }
 html {
   height: 100%;
 }
 
 body {
-  background-color: var(--one-000);
+  background-color: var(--bg-color);
   display: flex;
   /* flex-direction: column; */
   /* display: grid; */
@@ -71,6 +98,8 @@ body {
 
   /* display: grid; */
   min-height: 100%;
+  /* min-height: 100vh; */
+  /* height: 100%; */
   overflow: hidden;
 }
 
@@ -112,8 +141,8 @@ body {
   border-radius: 0.25rem;
   display: flex;
   flex-direction: column;
-  background-color: var(--nine-000);
-  color: var(--one-00);
+  background-color: var(--dialog-bg);
+  color: var(--dialog-text);
   padding: 1.5rem;
   gap: 1rem;
   &::backdrop {
@@ -128,12 +157,14 @@ body {
   & p {
     font-size: 0.875rem;
     line-height: 1.71;
+    color: var(--view-color);
   }
 
   & button {
     font-size: 0.9375rem;
     text-align: center;
     background-color: var(--orange);
+    color: var(--one-00);
     border-radius: 0.25rem;
     padding-block: 0.625rem 0.75rem;
     /* width: 100%; */
@@ -145,11 +176,12 @@ body {
   background-color: var(--eight-000);
   gap: 1.5rem;
   /* flex: 1; */
-  width: 100%;
+  /* width: 100%; */
   min-width: 0;
   /* max-width: 100vh; */
   /* max-width: 100svh; */
-  max-height: max-content;
+  /* max-height: max-content; */
+  height: min-content;
   overflow-x: hidden;
 
   /* nav {
@@ -162,6 +194,7 @@ main {
   display: flex;
   flex-direction: column;
   min-height: 100%;
+  /* height: 100%; */
   min-width: 0;
   flex: 1;
   overflow: hidden;
@@ -170,6 +203,7 @@ main {
 #markdown-con {
   display: flex;
   /* min-height: 100%; */
+  /* height: 100%; */
   min-width: 0;
   flex: 1;
 }
@@ -178,8 +212,10 @@ div[data-show="true"] {
   flex-direction: column;
   flex: 1;
 
+  /* height: 100%; */
   /* max-width: 100vh; */
-  overflow-x: hidden;
+  /* max-height: 100vh; */
+  /* overflow-x: hidden; */
 
   & :is(#markdown, #preview) {
     /* height: 100%; */
@@ -188,7 +224,7 @@ div[data-show="true"] {
   }
 
   & #markdown {
-    color: var(--four-000);
+    color: var(--text-area-color);
     font-size: 0.875rem;
     line-height: 1.71;
     padding-inline: 1rem;
@@ -364,15 +400,19 @@ label[for="toggle"] {
   margin-block-start: auto;
 } */
 #preview {
-  /* overflow-y: auto; */
   overflow: auto;
-  max-height: 100vh;
-  max-height: 100svh;
+  /* height: 0px; */
+  max-height: 90vh;
+  max-height: 90svh;
+  /* overflow: auto; */
+  /* max-height: 100vh; */
+  /* max-height: 100svh; */
+  /* height: 100%; */
   /* padding-inline: 1.25rem 1.25rem; */
   padding-inline: 1.25rem 0.625rem;
   padding-block: 1rem 3.375rem;
   & h1 {
-    color: var(--one-00);
+    color: var(--preview-text);
     font-family: "Roboto Slab", serif;
     font-optical-sizing: auto;
     font-weight: 700;
@@ -381,7 +421,7 @@ label[for="toggle"] {
     line-height: 1.3125;
   }
   & h2 {
-    color: var(--one-00);
+    color: var(--preview-text);
     font-family: "Roboto Slab", serif;
     font-optical-sizing: auto;
     font-weight: 300;
@@ -390,7 +430,7 @@ label[for="toggle"] {
     line-height: 1.32;
   }
   & h3 {
-    color: var(--one-00);
+    color: var(--preview-text);
     font-family: "Roboto Slab", serif;
     font-optical-sizing: auto;
     font-weight: 700;
@@ -401,7 +441,7 @@ label[for="toggle"] {
   }
 
   & h4 {
-    color: var(--one-00);
+    color: var(--preview-text);
     font-family: "Roboto Slab", serif;
     font-optical-sizing: auto;
     font-weight: 700;
@@ -411,7 +451,7 @@ label[for="toggle"] {
   }
 
   & h5 {
-    color: var(--one-00);
+    color: var(--preview-text);
     font-family: "Roboto Slab", serif;
     font-optical-sizing: auto;
     font-weight: 700;
@@ -434,12 +474,12 @@ label[for="toggle"] {
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    color: var(--four-000);
+    color: var(--preview-para);
     font-size: 0.875rem;
     line-height: 1.714;
 
     & code {
-      color: var(--one-00);
+      color: var(--preview-text);
       font-family: "Roboto Mono", monospace;
       font-optical-sizing: auto;
       font-weight: 400;
@@ -452,13 +492,15 @@ label[for="toggle"] {
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    color: var(--four-000);
+    /* color: var(--four-000); */
+    color: var(--preview-para);
     font-size: 0.875rem;
     line-height: 1.71;
   }
 
   & ul {
-    color: var(--four-000);
+    /* color: var(--four-000); */
+    color: var(--preview-para);
     font-family: "Roboto Slab", serif;
     font-optical-sizing: auto;
     font-weight: 400;
@@ -476,10 +518,10 @@ label[for="toggle"] {
     border-radius: 0.25rem;
     border-left: 0.25rem solid var(--orange);
     padding: 1.5rem;
-    background-color: var(--eight-000);
-
+    background-color: var(--preview-block-bg);
     & p {
-      color: var(--one-00);
+      color: var(--preview-text);
+
       font-family: "Roboto Slab", serif;
       font-optical-sizing: auto;
       font-weight: 700;
@@ -489,18 +531,20 @@ label[for="toggle"] {
     }
 
     & a {
-      color: var(--one-00);
+      color: var(--preview-text);
     }
   }
 
   & pre {
-    background-color: var(--eight-000);
+    /* background-color: var(--eight-000); */
+    background-color: var(--preview-block-bg);
     border-radius: 0.25rem;
     padding: 1.5rem;
+    /* margin-block-end: 3.375rem; */
     text-wrap: wrap;
 
     & code {
-      color: var(--one-00);
+      color: var(--preview-text);
       font-family: "Roboto Mono", monospace;
       font-optical-sizing: auto;
       font-weight: 400;
@@ -511,8 +555,9 @@ label[for="toggle"] {
   }
 }
 .view {
-  background-color: var(--nine-000);
-  color: var(--four-000);
+  background-color: var(--view-bg);
+  color: var(--view-color);
+
   text-transform: uppercase;
   display: flex;
   align-items: center;
@@ -528,7 +573,7 @@ label[for="toggle"] {
   }
 
   & svg {
-    color: var(--four-000);
+    color: var(--view-color);
     /* color: red; */
   }
 }
