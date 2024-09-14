@@ -274,8 +274,12 @@ div[data-show="false"] {
   color: var(--one-00);
   margin-inline-end: auto;
 
+  /* width: 100%; */
   gap: 1.018125rem;
 
+  .doc-display {
+    /* width: 100%; */
+  }
   /* show on tablet and desktop */
   & .doc-header {
     display: none;
@@ -286,6 +290,7 @@ div[data-show="false"] {
     line-height: 1.2;
     color: var(--one-00);
     caret-color: var(--orange);
+    /* width: 100%; */
 
     &:read-only {
       border-bottom: 0 solid transparent;
@@ -486,6 +491,7 @@ label[for="toggle"] {
   /* padding-inline: 1.25rem 1.25rem; */
   padding-inline: 1.25rem 0.625rem;
   padding-block: 1rem 3.375rem;
+  padding-block: 1rem 2.125rem;
   & h1 {
     color: var(--preview-text);
     font-family: "Roboto Slab", serif;
@@ -494,6 +500,8 @@ label[for="toggle"] {
     font-style: normal;
     font-size: 2rem;
     line-height: 1.3125;
+
+    padding-block-end: 1.375rem;
   }
   & h2 {
     color: var(--preview-text);
@@ -503,6 +511,8 @@ label[for="toggle"] {
     font-style: normal;
     font-size: 1.75rem;
     line-height: 1.32;
+
+    padding-block-end: 1.25rem;
   }
   & h3 {
     color: var(--preview-text);
@@ -513,6 +523,8 @@ label[for="toggle"] {
 
     font-size: 1.5rem;
     line-height: 1.33;
+
+    padding-block-end: 1.25rem;
   }
 
   & h4 {
@@ -523,6 +535,8 @@ label[for="toggle"] {
     font-style: normal;
     font-size: 1.25rem;
     line-height: 1.3;
+
+    padding-block-end: 1.25rem;
   }
 
   & h5 {
@@ -533,6 +547,7 @@ label[for="toggle"] {
     font-style: normal;
     font-size: 1rem;
     line-height: 1.3125;
+    padding-block-end: 1.25rem;
   }
 
   & h6 {
@@ -543,6 +558,7 @@ label[for="toggle"] {
     font-style: normal;
     font-size: 0.875rem;
     line-height: 1.2857;
+    padding-block-end: 1.25rem;
   }
   & p {
     font-family: "Roboto Slab", serif;
@@ -552,6 +568,8 @@ label[for="toggle"] {
     color: var(--preview-para);
     font-size: 0.875rem;
     line-height: 1.714;
+
+    padding-block-end: 1.25rem;
 
     & code {
       color: var(--preview-text);
@@ -571,6 +589,8 @@ label[for="toggle"] {
     color: var(--preview-para);
     font-size: 0.875rem;
     line-height: 1.71;
+
+    padding-block-end: 1.25rem;
   }
 
   & ul {
@@ -583,6 +603,8 @@ label[for="toggle"] {
     font-size: 0.875rem;
     line-height: 1.71;
 
+    padding-block-end: 1.25rem;
+
     & li::marker {
       color: var(--orange);
       font-size: 0.5rem;
@@ -594,6 +616,8 @@ label[for="toggle"] {
     border-left: 0.25rem solid var(--orange);
     padding: 1.5rem;
     background-color: var(--preview-block-bg);
+
+    margin-block-end: 1.25rem;
     & p {
       color: var(--preview-text);
 
@@ -617,6 +641,7 @@ label[for="toggle"] {
     padding: 1.5rem;
     /* margin-block-end: 3.375rem; */
     text-wrap: wrap;
+    margin-block-end: 1.25rem;
 
     & code {
       color: var(--preview-text);
