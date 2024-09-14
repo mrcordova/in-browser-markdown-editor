@@ -128,13 +128,30 @@ body {
     & p:nth-child(2) {
       font-size: 0.9375rem;
       line-height: 1.2;
+
+      &:hover {
+        cursor: pointer;
+        color: var(--orange);
+      }
     }
   }
 }
 .hide {
   display: none;
 }
+#delete-btn {
+  &:hover {
+    cursor: pointer;
 
+    & svg {
+      color: var(--orange);
+    }
+  }
+
+  & svg {
+    color: var(--five-000);
+  }
+}
 #delete-dialog[open] {
   border: 0;
   margin: auto;
@@ -171,6 +188,11 @@ body {
     border-radius: 0.25rem;
     padding-block: 0.625rem 0.75rem;
     /* width: 100%; */
+
+    &:hover {
+      cursor: pointer;
+      background-color: var(--oranga-hover);
+    }
   }
 }
 #header {
@@ -330,6 +352,11 @@ label[for="toggle"] {
   padding-block: 0.625rem 0.75rem;
   border-radius: 0.25rem;
   margin-block-end: 1.5rem;
+
+  &:hover {
+    cursor: pointer;
+    background-color: var(--oranga-hover);
+  }
 }
 /* show for desktop */
 #not-mobile-logo {
@@ -357,6 +384,11 @@ label[for="toggle"] {
   display: flex;
   align-items: center;
   gap: 0.489375rem;
+
+  &:hover {
+    cursor: pointer;
+    background-color: var(--oranga-hover);
+  }
   & span {
     display: none;
   }
@@ -394,6 +426,10 @@ label[for="toggle"] {
   padding-block: 1.3125rem;
   padding-inline: 1.0625rem;
 
+  &:hover {
+    cursor: pointer;
+    background-color: var(--orange);
+  }
   & img {
     /* width: 1.4375rem; */
     min-width: 1.4375rem;
@@ -638,6 +674,14 @@ label[for="toggle"] {
     }
   }
 
+  #preview-btn {
+    &:hover {
+      cursor: pointer;
+      & svg {
+        color: var(--orange);
+      }
+    }
+  }
   /* #preview-btn-tablet {
     display: block;
   } */
