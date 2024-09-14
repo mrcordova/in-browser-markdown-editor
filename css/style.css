@@ -343,6 +343,13 @@ label[for="toggle"] {
   padding-block: 0.75rem;
   margin-inline-end: 0.5rem;
 
+  display: flex;
+  align-items: center;
+  gap: 0.489375rem;
+  & span {
+    display: none;
+  }
+
   /* min-width: 2.5625rem; */
   /* min-height: 2.5625rem; */
   & img {
@@ -591,6 +598,16 @@ label[for="toggle"] {
 
   div:has(+ textarea) {
     border-right: 0.0625rem solid var(--six-000);
+  }
+
+  #save-btn {
+    & span {
+      display: block;
+      font-size: 0.9375rem;
+      line-height: 1.2;
+      text-wrap: nowrap;
+      color: var(--one-00);
+    }
   }
 
   /* #preview-btn-tablet {
