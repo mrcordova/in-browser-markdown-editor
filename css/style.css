@@ -407,8 +407,8 @@ label[for="toggle"] {
 }
 /* show when mobile and tablet */
 #sidebar-logo {
-  display: none;
-  background-color: var(--one-000);
+  /* display: none; */
+  /* background-color: var(--one-000); */
 
   /* width: 15.625rem; */
   /* height: max-content; */
@@ -641,4 +641,20 @@ label[for="toggle"] {
   /* #preview-btn-tablet {
     display: block;
   } */
+}
+
+@media (min-width: 90rem) {
+  #not-mobile-logo {
+    display: block;
+    /* border-right: 1px solid var(--six-000); */
+  }
+
+  .document-container {
+    padding-inline-start: 1.5rem;
+    border-left: 0.0625rem solid var(--six-000);
+  }
+
+  #sidebar-logo {
+    display: none;
+  }
 }
