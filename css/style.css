@@ -286,20 +286,20 @@ div[data-show="false"] {
     line-height: 1.2;
     color: var(--one-00);
 
-    &:hover {
-      cursor: pointer;
+    &:read-only {
+      border-bottom: 0 solid transparent;
     }
     &:read-write {
+      border-bottom: 0.0625rem solid var(--one-00);
+    }
+    &:hover {
+      cursor: pointer;
       border-bottom: 0.0625rem solid var(--one-00);
     }
 
     caret-color: var(--orange);
     &::placeholder {
       color: inherit;
-    }
-
-    &:read-only {
-      border-bottom: 0 solid transparent;
     }
   }
 }
