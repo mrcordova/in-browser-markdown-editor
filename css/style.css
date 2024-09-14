@@ -102,11 +102,16 @@ body {
   /* height: 100%; */
   overflow: hidden;
 }
-
 .documents {
   display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  /* overflow-y: auto; */
+}
+.document {
+  display: flex;
   align-items: center;
-  overflow-y: auto;
+  /* overflow-y: auto; */
 
   gap: 1.018125rem;
   padding-block-end: 1.625rem;
@@ -429,6 +434,8 @@ label[for="toggle"] {
   display: none;
   flex-direction: column;
   height: 100%;
+  max-height: 100vh;
+  overflow-y: auto;
   /* position: fixed; */
   /* max-width: max-content; */
   min-width: 0;
@@ -490,7 +497,7 @@ label[for="toggle"] {
   /* height: 100%; */
   /* padding-inline: 1.25rem 1.25rem; */
   padding-inline: 1.25rem 0.625rem;
-  padding-block: 1rem 3.375rem;
+  /* padding-block: 1rem 3.375rem; */
   padding-block: 1rem 2.125rem;
   & h1 {
     color: var(--preview-text);
@@ -627,6 +634,8 @@ label[for="toggle"] {
       font-style: normal;
       font-size: 0.875rem;
       line-height: 1.71;
+
+      padding-block-end: 0;
     }
 
     & a {
