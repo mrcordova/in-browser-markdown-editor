@@ -434,6 +434,8 @@ label[for="toggle"] {
   background-color: var(--nine-000);
   display: none;
   flex-direction: column;
+  position: relative;
+  z-index: 99;
   height: 100%;
   max-height: 100vh;
   overflow-y: auto;
