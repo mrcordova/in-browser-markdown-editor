@@ -13,19 +13,20 @@ const markDownTemp = previewBtns[0].children[0];
 const markdownTextArea = document.getElementById("markdown");
 
 const labelToggle = document.querySelector("label[for='toggle']");
-
+let currentFileName = "";
 const deleteBtn = document.getElementById("delete-btn");
 const deleteDialog = document.getElementById("delete-dialog");
 const confirmDeleteBtn = document.getElementById("confirm-delete-btn");
 const saveBtn = document.getElementById("save-btn");
 
-const files = JSON.parse(localStorage.getItem("files") || null) || {};
+let files = null;
 const sidebarBtn = document.getElementById("sidebar-btn");
 const sideBar = document.getElementById("sidebar");
-const sideBarLogo = document.getElementById("sidebar-logo");
+// const sideBarLogo = document.getElementById("sidebar-logo");
 const fileInput = document.getElementById("doc-name");
 const docTemplate = document.getElementById("doc-template");
 const documents = document.querySelector(".documents");
+
 let converter = new showdown.Converter();
 function toggleSidebar(e) {
   if (sideBar.style.display === "") {
@@ -89,11 +90,14 @@ for (const previewBtn of previewBtns) {
 
 window.addEventListener("load", (e) => {
   // console.log(files);
+  currentFileName = fileInput.value;
+  files = JSON.parse(localStorage.getItem("files") || null) || {};
   for (const fileName in files) {
     // console.log(fileName);
     const clone = docTemplate.content.cloneNode(true);
 
     const docInfo = clone.querySelector(".doc-info");
+    docInfo.dataset.file = fileName;
     docInfo.children[1].textContent = fileName;
     // console.log(clone);
     // clone.children[1].children[1].textContent = fileName;
@@ -131,6 +135,11 @@ deleteBtn.addEventListener("click", (e) => {
 });
 
 confirmDeleteBtn.addEventListener("click", (e) => {
+  console.log(files);
+  Reflect.deleteProperty(files, fileInput.value);
+  documents
+    .querySelector(`[data-file="${fileInput.value}"]`)
+    .parentElement.remove();
   deleteDialog.close();
 });
 
@@ -150,21 +159,27 @@ fileInput.addEventListener("focusout", (e) => {
   if (idx == -1 || idx + 3 !== len) {
     e.currentTarget.value += ".md";
   }
+  currentFileName = e.currentTarget.value;
 });
 
 saveBtn.addEventListener("click", (e) => {
   // console.log(markdownTextArea.value);
   const clone = docTemplate.content.cloneNode(true);
-  const docInfo = clone.querySelector(".doc-info");
+  const checkFileExist = documents.querySelector(
+    `[data-file="${currentFileName}"]`
+  );
 
-  // console.log(files);
-  // files[fileInput.value] = {};
-  // console.log(files[fileInput.value]);
+  if (checkFileExist !== null) {
+    checkFileExist.children[1].textContent = fileInput.value;
+    Reflect.deleteProperty(files, currentFileName);
+  } else {
+    const docInfo = clone.querySelector(".doc-info");
+    docInfo.dataset.file = fileInput.value;
+    docInfo.children[1].textContent = fileInput.value;
+    documents.appendChild(clone);
+  }
   files[fileInput.value] = markdownTextArea.value;
-  localStorage.setItem("files", JSON.stringify(files));
-  docInfo.children[1].textContent = fileInput.value;
-  documents.appendChild(clone);
 
-  // console.log(localStorage.getItem("files"));
-  // console.log(files);
+  localStorage.setItem("files", JSON.stringify(files));
+  currentFileName = fileInput.value;
 });
