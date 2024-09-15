@@ -135,11 +135,13 @@ deleteBtn.addEventListener("click", (e) => {
 });
 
 confirmDeleteBtn.addEventListener("click", (e) => {
-  console.log(files);
-  Reflect.deleteProperty(files, fileInput.value);
-  documents
-    .querySelector(`[data-file="${fileInput.value}"]`)
-    .parentElement.remove();
+  // console.log(files);
+  const docInfo = documents.querySelector(`[data-file="${fileInput.value}"]`);
+  if (docInfo !== null) {
+    docInfo.parentElement.remove();
+    Reflect.deleteProperty(files, fileInput.value);
+  }
+
   deleteDialog.close();
 });
 
