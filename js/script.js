@@ -140,6 +140,14 @@ confirmDeleteBtn.addEventListener("click", (e) => {
   if (docInfo !== null) {
     docInfo.parentElement.remove();
     Reflect.deleteProperty(files, fileInput.value);
+
+    const tempName =
+      documents.children[documents.children.length - 1].children[1]?.dataset
+        .file;
+    if (tempName !== undefined) {
+      markdownTextArea.value = files[tempName];
+      fileInput.value = tempName;
+    }
   }
 
   deleteDialog.close();
