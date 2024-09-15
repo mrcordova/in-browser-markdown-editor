@@ -17,16 +17,17 @@ const labelToggle = document.querySelector("label[for='toggle']");
 const deleteBtn = document.getElementById("delete-btn");
 const deleteDialog = document.getElementById("delete-dialog");
 const confirmDeleteBtn = document.getElementById("confirm-delete-btn");
+const saveBtn = document.getElementById("save-btn");
 
+const files = JSON.parse(localStorage.getItem("files") || null) || {};
 const sidebarBtn = document.getElementById("sidebar-btn");
 const sideBar = document.getElementById("sidebar");
 const sideBarLogo = document.getElementById("sidebar-logo");
 const fileInput = document.getElementById("doc-name");
+const docTemplate = document.getElementById("doc-template");
+const documents = document.querySelector(".documents");
 let converter = new showdown.Converter();
 function toggleSidebar(e) {
-  // sideBar.style.display = "block";
-  // sideBarLogo.style.display = "block";
-
   if (sideBar.style.display === "") {
     sideBar.style.display = "flex";
   } else {
@@ -86,6 +87,20 @@ for (const previewBtn of previewBtns) {
   previewBtn.addEventListener("click", togglePreview);
 }
 
+window.addEventListener("load", (e) => {
+  // console.log(files);
+  for (const fileName in files) {
+    // console.log(fileName);
+    const clone = docTemplate.content.cloneNode(true);
+
+    const docInfo = clone.querySelector(".doc-info");
+    docInfo.children[1].textContent = fileName;
+    // console.log(clone);
+    // clone.children[1].children[1].textContent = fileName;
+    documents.appendChild(clone);
+  }
+});
+
 markdownTextArea.addEventListener("input", (e) => {
   preview.replaceChildren();
   preview.insertAdjacentHTML(
@@ -135,4 +150,21 @@ fileInput.addEventListener("focusout", (e) => {
   if (idx == -1 || idx + 3 !== len) {
     e.currentTarget.value += ".md";
   }
+});
+
+saveBtn.addEventListener("click", (e) => {
+  // console.log(markdownTextArea.value);
+  const clone = docTemplate.content.cloneNode(true);
+  const docInfo = clone.querySelector(".doc-info");
+
+  // console.log(files);
+  // files[fileInput.value] = {};
+  // console.log(files[fileInput.value]);
+  files[fileInput.value] = markdownTextArea.value;
+  localStorage.setItem("files", JSON.stringify(files));
+  docInfo.children[1].textContent = fileInput.value;
+  documents.appendChild(clone);
+
+  // console.log(localStorage.getItem("files"));
+  // console.log(files);
 });
