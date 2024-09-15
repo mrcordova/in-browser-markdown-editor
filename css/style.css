@@ -453,17 +453,24 @@ label[for="toggle"] {
 }
 #sidebar-btn {
   background-color: var(--seven-000);
+  /* Mobile */
   padding-block: 1.3125rem;
   padding-inline: 1.0625rem;
+  /* Tablet */
+  padding-block: 1.6875rem;
+  padding-inline: 1.3125rem;
 
   &:hover {
     cursor: pointer;
     background-color: var(--orange);
   }
   & img {
-    /* width: 1.4375rem; */
+    /* Mobile */
     min-width: 1.4375rem;
     height: 0.875rem;
+    /* TAblet */
+    min-width: 1.875rem;
+    height: 1.125rem;
   }
   &[data-menu="menu"] > img {
     min-width: 1.125rem;
@@ -489,6 +496,8 @@ label[for="toggle"] {
   /* height: 0px; */
   max-height: 90vh;
   max-height: 90svh;
+  max-width: 42rem;
+  align-self: center;
   /* top: 2.6rem; */
   top: 6.125rem;
   /* overflow: auto; */
@@ -498,7 +507,7 @@ label[for="toggle"] {
   /* padding-inline: 1.25rem 1.25rem; */
   padding-inline: 1.25rem 0.625rem;
   /* padding-block: 1rem 3.375rem; */
-  padding-block: 1rem 2.125rem;
+  padding-block: 1.375rem 2.125rem;
   & h1 {
     color: var(--preview-text);
     font-family: "Roboto Slab", serif;
