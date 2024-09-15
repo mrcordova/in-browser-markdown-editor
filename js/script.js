@@ -19,13 +19,14 @@ const deleteDialog = document.getElementById("delete-dialog");
 const confirmDeleteBtn = document.getElementById("confirm-delete-btn");
 const saveBtn = document.getElementById("save-btn");
 
-let files = null;
+let files = JSON.parse(localStorage.getItem("files") || null) || {};
 const sidebarBtn = document.getElementById("sidebar-btn");
 const sideBar = document.getElementById("sidebar");
 // const sideBarLogo = document.getElementById("sidebar-logo");
 const fileInput = document.getElementById("doc-name");
 const docTemplate = document.getElementById("doc-template");
 const documents = document.querySelector(".documents");
+const newDocBtn = document.getElementById("new-document-btn");
 
 let converter = new showdown.Converter();
 function toggleSidebar(e) {
@@ -83,15 +84,14 @@ function togglePreview(e) {
     previewBtnOne.dataset.preview === "show" ? "hide" : "show"
   );
 }
-
-for (const previewBtn of previewBtns) {
-  previewBtn.addEventListener("click", togglePreview);
+function loadFile(e) {
+  console.log(e.currentTarget);
 }
 
 window.addEventListener("load", (e) => {
-  // console.log(files);
   currentFileName = fileInput.value;
   files = JSON.parse(localStorage.getItem("files") || null) || {};
+  console.log(files);
   for (const fileName in files) {
     // console.log(fileName);
     const clone = docTemplate.content.cloneNode(true);
@@ -104,6 +104,9 @@ window.addEventListener("load", (e) => {
     documents.appendChild(clone);
   }
 });
+for (const previewBtn of previewBtns) {
+  previewBtn.addEventListener("click", togglePreview);
+}
 
 markdownTextArea.addEventListener("input", (e) => {
   preview.replaceChildren();
@@ -172,6 +175,26 @@ fileInput.addEventListener("focusout", (e) => {
   currentFileName = e.currentTarget.value;
 });
 
+newDocBtn.addEventListener("click", (e) => {
+  const clone = docTemplate.content.cloneNode(true);
+  const docInfo = clone.querySelector(".doc-info");
+
+  console.log(docInfo);
+  const fileName = "untitled-document.md";
+  docInfo.dataset.file = fileName;
+  docInfo.children[1].textContent = fileName;
+  docInfo.children[1].addEventListener("click", loadFile);
+  fileInput.value = fileName;
+  markdownTextArea.value = "";
+
+  files[fileName] = markdownTextArea.value;
+  currentFileName = fileName;
+  documents.appendChild(clone);
+
+  // localStorage.setItem('files', JSON.stringify(files));
+  // console.log(files);
+});
+
 saveBtn.addEventListener("click", (e) => {
   // console.log(markdownTextArea.value);
   const clone = docTemplate.content.cloneNode(true);
@@ -186,6 +209,7 @@ saveBtn.addEventListener("click", (e) => {
     const docInfo = clone.querySelector(".doc-info");
     docInfo.dataset.file = fileInput.value;
     docInfo.children[1].textContent = fileInput.value;
+    docInfo.children[1].addEventListener("click", loadFile);
     documents.appendChild(clone);
   }
   files[fileInput.value] = markdownTextArea.value;
