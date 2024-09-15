@@ -86,6 +86,9 @@ function togglePreview(e) {
 }
 function loadFile(e) {
   console.log(e.currentTarget);
+  currentFileName = e.currentTarget.textContent;
+  fileInput.value = currentFileName;
+  markdownTextArea.value = files[currentFileName];
 }
 
 window.addEventListener("load", (e) => {
