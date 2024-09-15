@@ -29,6 +29,20 @@ const documents = document.querySelector(".documents");
 const newDocBtn = document.getElementById("new-document-btn");
 
 let converter = new showdown.Converter();
+let currentNewFile =
+  JSON.parse(localStorage.getItem("currentNewFile") || null) || 0;
+const options = {
+  year: "numeric",
+  month: "long",
+  day: "2-digit",
+};
+
+function createDate() {
+  return new Date().toLocaleDateString("en-AU", options);
+}
+
+// console.log(getTime());
+
 function toggleSidebar(e) {
   if (sideBar.style.display === "") {
     sideBar.style.display = "flex";
@@ -85,10 +99,10 @@ function togglePreview(e) {
   );
 }
 function loadFile(e) {
-  console.log(e.currentTarget);
+  // console.log(e.currentTarget);
   currentFileName = e.currentTarget.textContent;
   fileInput.value = currentFileName;
-  markdownTextArea.value = files[currentFileName];
+  markdownTextArea.value = files[currentFileName].markdown;
 }
 
 window.addEventListener("load", (e) => {
@@ -101,7 +115,9 @@ window.addEventListener("load", (e) => {
 
     const docInfo = clone.querySelector(".doc-info");
     docInfo.dataset.file = fileName;
+    docInfo.children[0].textContent = files[fileName].date;
     docInfo.children[1].textContent = fileName;
+    docInfo.children[1].addEventListener("click", loadFile);
     // console.log(clone);
     // clone.children[1].children[1].textContent = fileName;
     documents.appendChild(clone);
@@ -147,13 +163,23 @@ confirmDeleteBtn.addEventListener("click", (e) => {
     docInfo.parentElement.remove();
     Reflect.deleteProperty(files, fileInput.value);
 
+    localStorage.setItem("files", JSON.stringify(files));
+
+    // console.log(files);
+
     const tempName =
       documents.children[documents.children.length - 1].children[1]?.dataset
         .file;
     if (tempName !== undefined) {
-      markdownTextArea.value = files[tempName];
+      markdownTextArea.value = files[tempName].markdown;
       fileInput.value = tempName;
+    } else {
+      markdownTextArea.value = "";
+      fileInput.value = `untitled-document-${getTime()}.md`;
     }
+  } else {
+    markdownTextArea.value = "";
+    fileInput.value = "";
   }
 
   deleteDialog.close();
@@ -182,19 +208,27 @@ newDocBtn.addEventListener("click", (e) => {
   const clone = docTemplate.content.cloneNode(true);
   const docInfo = clone.querySelector(".doc-info");
 
-  console.log(docInfo);
-  const fileName = "untitled-document.md";
+  // console.log(docInfo);
+  const fileName = `untitled-document${
+    currentNewFile == 0 ? "" : `(${currentNewFile})`
+  }.md`;
+  currentNewFile++;
+  localStorage.getItem("currentNewFile", currentNewFile);
   docInfo.dataset.file = fileName;
+  docInfo.children[0].textContent = createDate();
   docInfo.children[1].textContent = fileName;
   docInfo.children[1].addEventListener("click", loadFile);
   fileInput.value = fileName;
   markdownTextArea.value = "";
 
-  files[fileName] = markdownTextArea.value;
+  files[fileName] = {
+    markdown: markdownTextArea.value,
+    date: docInfo.children[0].textContent,
+  };
   currentFileName = fileName;
   documents.appendChild(clone);
 
-  // localStorage.setItem('files', JSON.stringify(files));
+  localStorage.setItem("files", JSON.stringify(files));
   // console.log(files);
 });
 
@@ -204,18 +238,25 @@ saveBtn.addEventListener("click", (e) => {
   const checkFileExist = documents.querySelector(
     `[data-file="${currentFileName}"]`
   );
+  let date = "";
 
   if (checkFileExist !== null) {
     checkFileExist.children[1].textContent = fileInput.value;
+    date = checkFileExist.children[0].textContent;
     Reflect.deleteProperty(files, currentFileName);
   } else {
     const docInfo = clone.querySelector(".doc-info");
     docInfo.dataset.file = fileInput.value;
+    docInfo.children[0].textContent = createDate();
     docInfo.children[1].textContent = fileInput.value;
     docInfo.children[1].addEventListener("click", loadFile);
+    date = docInfo.children[0].textContent;
     documents.appendChild(clone);
   }
-  files[fileInput.value] = markdownTextArea.value;
+  files[fileInput.value] = {
+    markdown: markdownTextArea.value,
+    date,
+  };
 
   localStorage.setItem("files", JSON.stringify(files));
   currentFileName = fileInput.value;
