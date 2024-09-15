@@ -154,6 +154,7 @@ body {
   }
 
   & svg {
+    min-width: 1.125rem;
     color: var(--five-000);
   }
 }
@@ -453,24 +454,28 @@ label[for="toggle"] {
 }
 #sidebar-btn {
   background-color: var(--seven-000);
+  padding-block: clamp(1.3125rem, 0.9547rem + 1.5267vw, 1.6875rem);
+  padding-inline: clamp(1.0625rem, 0.824rem + 1.0178vw, 1.3125rem);
   /* Mobile */
-  padding-block: 1.3125rem;
-  padding-inline: 1.0625rem;
+  /* padding-block: 1.3125rem; */
+  /* padding-inline: 1.0625rem; */
   /* Tablet */
-  padding-block: 1.6875rem;
-  padding-inline: 1.3125rem;
+  /* padding-block: 1.6875rem; */
+  /* padding-inline: 1.3125rem; */
 
   &:hover {
     cursor: pointer;
     background-color: var(--orange);
   }
   & img {
+    min-width: clamp(1.4375rem, 1.02rem + 1.7812vw, 1.875rem);
+    height: clamp(0.875rem, 0.6365rem + 1.0178vw, 1.125rem);
     /* Mobile */
-    min-width: 1.4375rem;
-    height: 0.875rem;
+    /* min-width: 1.4375rem; */
+    /* height: 0.875rem; */
     /* TAblet */
-    min-width: 1.875rem;
-    height: 1.125rem;
+    /* min-width: 1.875rem; */
+    /* height: 1.125rem; */
   }
   &[data-menu="menu"] > img {
     min-width: 1.125rem;
@@ -506,8 +511,9 @@ label[for="toggle"] {
   /* height: 100%; */
   /* padding-inline: 1.25rem 1.25rem; */
   padding-inline: 1.25rem 0.625rem;
+  padding-block: clamp(1rem, 0.6422rem + 1.5267vw, 1.375rem) 2.125rem;
   /* padding-block: 1rem 3.375rem; */
-  padding-block: 1.375rem 2.125rem;
+  /* padding-block: 1.375rem 2.125rem; */
   & h1 {
     color: var(--preview-text);
     font-family: "Roboto Slab", serif;
@@ -696,6 +702,15 @@ label[for="toggle"] {
     /* color: red; */
   }
 }
+#preview-btn,
+#markdown-btn {
+  &:hover {
+    cursor: pointer;
+    & svg {
+      color: var(--orange);
+    }
+  }
+}
 
 @media (min-width: 48rem) {
   div[data-show="true"]:has(#markdown-btn) + div[data-show="false"] {
@@ -734,18 +749,6 @@ label[for="toggle"] {
       color: var(--one-00);
     }
   }
-
-  #preview-btn {
-    &:hover {
-      cursor: pointer;
-      & svg {
-        color: var(--orange);
-      }
-    }
-  }
-  /* #preview-btn-tablet {
-    display: block;
-  } */
 }
 
 @media (min-width: 90rem) {
