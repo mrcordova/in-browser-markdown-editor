@@ -421,14 +421,21 @@ label[for="toggle"] {
   }
 }
 
+div:has(div#preview) {
+  position: relative;
+}
+
 #preview {
   overflow: auto;
-  position: fixed;
+  position: absolute;
   max-height: 90vh;
   max-height: 90svh;
   max-width: 42rem;
   align-self: center;
-  top: 6.125rem;
+  /* top: 6.125rem; */
+  top: 2.125rem;
+  left: auto;
+  right: auto;
 
   padding-inline: 1.25rem 0.625rem;
   padding-block: clamp(1rem, 0.6422rem + 1.5267vw, 1.375rem) 2.125rem;
@@ -614,6 +621,7 @@ label[for="toggle"] {
 
   & svg {
     color: var(--view-color);
+    min-width: 1rem;
   }
 }
 #preview-btn,
@@ -623,6 +631,12 @@ label[for="toggle"] {
     & svg {
       color: var(--orange);
     }
+  }
+}
+
+@media (max-width: 426px) {
+  #preview {
+    left: 0;
   }
 }
 
