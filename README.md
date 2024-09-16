@@ -35,8 +35,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [Github repo](https://github.com/mrcordova/in-browser-markdown-editor)
+- Live Site URL: [Github page](https://mrcordova.github.io/in-browser-markdown-editor/)
 
 ## My process
 
