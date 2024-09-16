@@ -430,10 +430,11 @@ div:has(div#preview) {
   position: absolute;
   max-height: 90vh;
   max-height: 90svh;
+
   max-width: 42rem;
   align-self: center;
   /* top: 6.125rem; */
-  top: 2.125rem;
+  top: 2.625rem;
   left: auto;
   right: auto;
 
